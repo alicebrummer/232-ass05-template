@@ -14,7 +14,10 @@
 /// - double member named 'd'
 /// - char pointer member named 'cPtr'
 union LegacyData {
-    // TODO: Define members here
+   
+     int i;
+     double d;
+     char * cPtr;
 };
 
 /// Converts a LegacyData union to a formatted string based on the active type.
