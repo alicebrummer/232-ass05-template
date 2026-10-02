@@ -83,6 +83,16 @@ classNodeT<int>* createTwoTemplateNodes() {
     return nullptr;
 }
 
+// Function:
+// int sum(int a, int b)
+// {
+//     return a+b;
+// }
+
+//Method:
+// class Math
+
+
 // ============================================================
 // STAGE 4: C++17 Variant and LinkedList Manager
 // ============================================================
