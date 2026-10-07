@@ -66,11 +66,6 @@ void tearDown(void) {}
 
 // };
 
-
-
-
-
-
 // union LegacyData
 // {
 //     int i;
@@ -117,32 +112,32 @@ int main(void)
     // printf("%d\n", var.i);
 
     //printf("%d\n", sizeof(Struct));
+
+
+    UNITY_BEGIN();
+
+    // ========== STAGE 0 ==========
+    RUN_TEST(test_printLegacyData_int);
+    RUN_TEST(test_printLegacyData_double);
+
+    // ========== STAGE 1 ==========
+    RUN_TEST(test_createTwoStructNodes_links_correctly);
+
+    // ========== STAGE 2 ==========
+    RUN_TEST(test_createTwoClassNodes_links_correctly);
+
+    // ========== STAGE 3 ==========
+    RUN_TEST(test_createTwoTemplateNodes_links_correctly);
+
+    // ========== STAGE 4 ==========
+    RUN_TEST(test_linkedList_addFirst_updates_counter);
+    RUN_TEST(test_linkedList_addLast_places_at_end);
+    RUN_TEST(test_linkedList_deleteValue_removes_variant);
+    RUN_TEST(test_linkedList_destroyList_clears_all);
+    RUN_TEST(test_linkedList_deleteFirst);
+    RUN_TEST(test_linkedList_deleteLast);
+    RUN_TEST(test_linkedList_printList);
+
+    int result = UNITY_END();
+    return result;
 }
-//{
-//     UNITY_BEGIN();
-
-//     // ========== STAGE 0 ==========
-//     RUN_TEST(test_printLegacyData_int);
-//     RUN_TEST(test_printLegacyData_double);
-
-//     // ========== STAGE 1 ==========
-//     RUN_TEST(test_createTwoStructNodes_links_correctly);
-
-//     // ========== STAGE 2 ==========
-//     RUN_TEST(test_createTwoClassNodes_links_correctly);
-
-//     // ========== STAGE 3 ==========
-//     RUN_TEST(test_createTwoTemplateNodes_links_correctly);
-
-//     // ========== STAGE 4 ==========
-//     RUN_TEST(test_linkedList_addFirst_updates_counter);
-//     RUN_TEST(test_linkedList_addLast_places_at_end);
-//     RUN_TEST(test_linkedList_deleteValue_removes_variant);
-//     RUN_TEST(test_linkedList_destroyList_clears_all);
-//     RUN_TEST(test_linkedList_deleteFirst);
-//     RUN_TEST(test_linkedList_deleteLast);
-//     RUN_TEST(test_linkedList_printList);
-
-//     int result = UNITY_END();
-//     return result;
-// }

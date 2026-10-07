@@ -8,6 +8,9 @@
 // STAGE 0: Legacy C Union
 // ============================================================
 
+//Note: This is evelution of union 
+
+
 /// A union capable of storing an int, double, or char pointer.
 /// YOUR TASK: Add three members:
 /// - int member named 'i'
@@ -36,7 +39,9 @@ std::string printLegacyData(LegacyData data, char type);
 /// - Pointer member named 'nextPtr' pointing to structNode
 /// - char member named 'typeData' ('i', 'd', 'c')
 struct structNode {
-    // TODO: Define members here
+    LegacyData value;
+    structNode* nextPtr;
+    char typeData;
 };
 
 /// Manually initializes a structNode with the given data and type.
@@ -60,12 +65,13 @@ structNode* createTwoStructNodes();
 class classNode {
 public:
     // TODO: Define members and constructor
-    // LegacyData value;
-    // classNode* nextPtr;
-    // char typeData;
+    LegacyData value; // const value
+    classNode* nextPtr;
+    char typeData;
 
-    // classNode(LegacyData val, char type);
-};
+    classNode(LegacyData val, char type);
+};     //LegacyData is a union
+  
 
 /// Creates two dynamically allocated classNode objects linked together.
 /// Node 1 contains int 5, Node 2 contains double 3.14.
@@ -81,12 +87,16 @@ classNode* createTwoClassNodes();
 /// YOUR TASK: Define member 'value' of type T, 'nextPtr' of type classNodeT<T>*, and constructor.
 template <typename T>
 class classNodeT {
-// public:
-//     // TODO: Define members and constructor using initializer list
-//     T value;
-//     classNodeT<T>* nextPtr;
+public:
+    // TODO: Define members and constructor using initializer list
+        //Note: initializer T value treat like a function then point where is your input
+        //Note: Initializer list replaces the LegacyData
+        //Note: HEre you can use const value
+        //Note; This is how you write a constructor
+    T value;
+    classNodeT<T>* nextPtr;
 
-//     classNodeT(T d) : value(d), nextPtr(nullptr) {}
+    classNodeT(T d) : value(d), nextPtr(nullptr) {}
 };
 
 /// Creates two dynamically allocated classNodeT<int> objects linked together.
@@ -99,11 +109,12 @@ classNodeT<int>* createTwoTemplateNodes();
 // ============================================================
 
 /// Type alias for modern C++17 variant supporting int, double, or std::string.
-using ModernData = std::variant<int, double, std::string>;
+using ModernData = std::variant<int, double, std::string>; //
 
 /// A modern C++17 linked list node using std::variant for type-safe storage.
 class classNodeVariant {
 public:
+
     // ModernData value;
     // classNodeVariant* nextPtr;
 

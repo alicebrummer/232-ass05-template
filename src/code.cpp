@@ -26,6 +26,8 @@ std::string printLegacyData(LegacyData data, char type)
 
     if(type == 'i')
         result = std::format("{}", data.i );
+    if(type == 'd')
+        result = std::format("{}", data.d );
     if(type == 'c')
         if(data.cPtr != NULL)
             result = std::format("{}", data.cPtr );
@@ -41,7 +43,9 @@ std::string printLegacyData(LegacyData data, char type)
 
 /// Initializes a structNode with value, type indicator, and nullptr nextPtr.
 void initStructNode(structNode* nPtr, LegacyData val, char type) {
-    // TODO: Check if nPtr is nullptr before assigning fields
+    nPtr->value = val;
+    nPtr->nextPtr = NULL;
+    nPtr->typeData = type;
 }
 
 /// Dynamically allocates two structNodes.
@@ -50,8 +54,19 @@ void initStructNode(structNode* nPtr, LegacyData val, char type) {
 /// Links Node 1 -> Node 2 -> nullptr
 /// Returns pointer to Node 1.
 structNode* createTwoStructNodes() {
-    // TODO: Allocate dynamically using new, initialize both nodes, link them, and return head
-    return nullptr;
+    structNode* a = new structNode;
+    LegacyData t;
+    t.i = 5;
+    initStructNode(a, t, 'i');
+
+
+    structNode* b = new structNode;
+    LegacyData e;
+    e.d = 3.14;
+    initStructNode(b, e, 'd');
+
+    a->nextPtr = b;
+    return a;
 }
 
 // ============================================================
@@ -63,14 +78,33 @@ structNode* createTwoStructNodes() {
 
 // uncomment the following code to implement the classNode constructor
 
-// classNode::classNode(LegacyData val, char type) {
+classNode::classNode(LegacyData val, char type) {
+    {
+        if(type == 'i')
+            value.i = val.i;    //int i = (int)3.0 + 1;
+                             //value = val;        // value is a struct
+                                //.. 'c' 'd'
+        if(type == 'c')
+            value.cPtr = val.cPtr;
+        if(type == 'd')
+            value.d = val.d;
+        typeData = type;
+        nextPtr = NULL;
+    }
 //     // TODO: Assign value, typeData, and set nextPtr to nullptr
-// }
+}
 
 /// Dynamically allocates two classNodes (int 5, double 3.14) and links them.
 classNode* createTwoClassNodes() {
-    // TODO: Allocate dynamically, link nodes, and return head
-    return nullptr;
+    LegacyData x;
+    LegacyData y;
+    x.i = 5;
+    y.d = 3.14;
+
+    classNode* s = new classNode(x, 'i');
+    classNode* t = new classNode(y, 'd');
+    s->nextPtr = t;
+    return s;
 }
 
 // ============================================================
@@ -79,8 +113,13 @@ classNode* createTwoClassNodes() {
 
 /// Dynamically allocates two classNodeT<int> objects (int 5, int 3) and links them.
 classNodeT<int>* createTwoTemplateNodes() {
+
+    classNodeT<int>* k = new classNodeT<int>(5);
+    classNodeT<int>* r = new classNodeT<int>(3);
+
+    k->nextPtr = r;
     // TODO: Instantiate classNodeT<int> nodes using new, link them, and return head
-    return nullptr;
+    return k;
 }
 
 // Function:
