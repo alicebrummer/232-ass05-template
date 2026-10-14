@@ -100,53 +100,118 @@ void test_createTwoTemplateNodes_links_correctly(void)
 /// Verify listLength() returns 2 after insertions.
 void test_linkedList_addFirst_updates_counter(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList* x = new LinkedList();
+    classNodeVariant* y = new classNodeVariant(1);
+    classNodeVariant* v = new classNodeVariant(2);
+    x->addFirst(y);
+    x->addFirst(v);
+    TEST_ASSERT_TRUE_MESSAGE(x->listLength() == 2, "list length = 2");
+    
 }
 
 /// Create a LinkedList. Add nodes (10, then 20) using addLast.
 /// Capture std::cout and verify elements appear in order ("10" before "20").
 void test_linkedList_addLast_places_at_end(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList* x = new LinkedList();
+    classNodeVariant* y = new classNodeVariant(10);
+    classNodeVariant* v = new classNodeVariant(20);
+    x->addLast(y);
+    x->addLast(v);
+    TEST_ASSERT_TRUE_MESSAGE(y->nextPtr == v, " y = v");
+    
 }
-
 /// Create a LinkedList with an int, double, and string.
 /// Call deleteValue() with the double value (3.14).
 /// Verify list length decreases to 2 and second call returns -1.
 void test_linkedList_deleteValue_removes_variant(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+
+    LinkedList* x = new LinkedList();
+    classNodeVariant* y = new classNodeVariant(1);
+    classNodeVariant* v = new classNodeVariant(3.14);
+    classNodeVariant* z = new classNodeVariant("test");
+    x->addLast(y);
+    x->addLast(v);
+    x->addLast(z);
+    x->deleteValue(3.14);
+    int b = x->deleteValue(3.14);
+    TEST_ASSERT_TRUE_MESSAGE(x->listLength() == 2, "list length = 2");
+    TEST_ASSERT_TRUE_MESSAGE(b == -1, "list length = 2");
 }
+
+
+
+
 
 /// Create a LinkedList and insert three nodes.
 /// Call destroyList().
 /// Verify listLength() becomes 0.
 void test_linkedList_destroyList_clears_all(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList* x = new LinkedList();
+    classNodeVariant* y = new classNodeVariant(1);
+    classNodeVariant* v = new classNodeVariant(2);
+    classNodeVariant* z = new classNodeVariant(5);
+
+    x->destroyList();
+    TEST_ASSERT_TRUE_MESSAGE(x->listLength() == 0, "list length = 0");
 }
+
+
+
+
 
 /// Create a LinkedList with nodes (10, 20, 30).
 /// Call deleteFirst().
 /// Verify listLength() becomes 2 and operation returns 0.
 void test_linkedList_deleteFirst(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList* x = new LinkedList();
+    classNodeVariant* y = new classNodeVariant(10);
+    classNodeVariant* v = new classNodeVariant(20);
+    classNodeVariant* z = new classNodeVariant(30);
+    x->addLast(y);
+    x->addLast(v);
+    x->addLast(z);
+    x->deleteFirst();
+
+    TEST_ASSERT_TRUE_MESSAGE(x->listLength() == 2, "list length = 2");
 }
+
+
+
 
 /// Create a LinkedList with nodes (10, 20, 30).
 /// Call deleteLast().
 /// Verify listLength() becomes 2 and operation returns 0.
 void test_linkedList_deleteLast(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList* x = new LinkedList();
+    classNodeVariant* y = new classNodeVariant(10);
+    classNodeVariant* v = new classNodeVariant(20);
+    classNodeVariant* z = new classNodeVariant(30);
+    x->addLast(y);
+    x->addLast(v);
+    x->addLast(z);
+    x->deleteLast();
+    TEST_ASSERT_TRUE_MESSAGE(x->listLength() == 2, "list length = 30");
 }
+
+
+
 
 /// Create a LinkedList with nodes (1, 2.5, "test").
 /// Redirect std::cout buffer and call printList().
 /// Verify printed output contains "1", "2.5" (or "2.50"), and "test".
 void test_linkedList_printList(void) 
 {
+    LinkedList* x = new LinkedList();
+    classNodeVariant* y = new classNodeVariant(1);
+    classNodeVariant* v = new classNodeVariant(2.5);
+    classNodeVariant* z = new classNodeVariant("test");
+    x->printList();
+    std::cout << "1" << "2.5" << "test" << std::endl;
     TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
     
 }

@@ -115,31 +115,33 @@ using ModernData = std::variant<int, double, std::string>; //
 class classNodeVariant {
 public:
 
-    // ModernData value;
-    // classNodeVariant* nextPtr;
+    ModernData value;
+    classNodeVariant* nextPtr;
 
-    // /// Constructor using member initializer list.
-    // classNodeVariant(ModernData d) : value(d), nextPtr(nullptr) {}
+    /// Constructor using member initializer list.
+    classNodeVariant(ModernData d) : value(d), nextPtr(nullptr) {}
 };
 
 /// A fully encapsulated linked list manager for classNodeVariant objects.
 /// YOUR TASK: Declare private members (headPtr, counter) and public methods.
 class LinkedList {
-// private:
-//     // TODO: Add headPtr (classNodeVariant*) and counter (int)
+private:
+    classNodeVariant* headPtr;
+    int counter;
+    // TODO: Add headPtr (classNodeVariant*) and counter (int)
 
-// public:
-//     LinkedList();
-//     ~LinkedList();
+public:
+    LinkedList();
+    ~LinkedList();
 
-//     void destroyList();
-//     int addFirst(classNodeVariant* newNodePtr);
-//     int addLast(classNodeVariant* newNodePtr);
-//     int deleteFirst();
-//     int deleteLast();
-//     int deleteValue(ModernData targetValue);
-//     int printList();
-//     int listLength();
+    void destroyList();
+    int addFirst(classNodeVariant* newNodePtr);
+    int addLast(classNodeVariant* newNodePtr);
+    int deleteFirst();
+    int deleteLast();
+    int deleteValue(ModernData targetValue);
+    int printList();
+    int listLength();
 };
 
 #endif
